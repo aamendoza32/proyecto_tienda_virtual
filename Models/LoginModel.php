@@ -84,6 +84,5 @@
 			$request = $this->update($sql,$arrData);
 			return $request;
 		}
-
 	}
  ?>

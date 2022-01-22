@@ -51,7 +51,7 @@
 			die();
 		}
 
-        		public function resetPass(){
+		public function resetPass(){
 			if($_POST){
 				error_reporting(0);
 
@@ -159,7 +159,6 @@
 			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			die();
 		}
-
 
 	}
  ?>
