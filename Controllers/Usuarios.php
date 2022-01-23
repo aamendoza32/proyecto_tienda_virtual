@@ -71,7 +71,6 @@
 						}
 
 					}
-
 					if($request_user > 0 )
 					{
 						if($option == 1){
