@@ -102,7 +102,7 @@ class Clientes extends Controllers{
 		die();
 	}
 
-    	public function getClientes()
+    public function getClientes()
 	{
 		if($_SESSION['permisosMod']['r']){
 			$arrData = $this->model->selectClientes();
@@ -143,6 +143,7 @@ class Clientes extends Controllers{
 		}
 		die();
 	}
+
 
 
 }
