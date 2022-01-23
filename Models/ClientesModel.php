@@ -69,4 +69,14 @@ class ClientesModel extends Mysql
 		return $request;
 	}
 
+    public function selectCliente(int $idpersona){
+		$this->intIdUsuario = $idpersona;
+		$sql = "SELECT idpersona,identificacion,nombres,apellidos,telefono,email_user,nit,nombrefiscal,direccionfiscal,status, DATE_FORMAT(datecreated, '%d-%m-%Y') as fechaRegistro 
+				FROM persona
+				WHERE idpersona = $this->intIdUsuario and rolid = ".RCLIENTES;
+		$request = $this->select($sql);
+		return $request;
+	}
+
+
 }
