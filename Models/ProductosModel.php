@@ -98,6 +98,50 @@ class ProductosModel extends Mysql
         return $request;
     }
 
+    public function updateProducto(int $idproducto, string $nombre, string $descripcion, int $codigo, int $categoriaid, string $precio, int $stock, string $ruta, int $status)
+    {
+        $this->intIdProducto = $idproducto;
+        $this->strNombre = $nombre;
+        $this->strDescripcion = $descripcion;
+        $this->intCodigo = $codigo;
+        $this->intCategoriaId = $categoriaid;
+        $this->strPrecio = $precio;
+        $this->intStock = $stock;
+        $this->strRuta = $ruta;
+        $this->intStatus = $status;
+        $return = 0;
+        $sql = "SELECT * FROM producto WHERE codigo = '{$this->intCodigo}' AND idproducto != $this->intIdProducto ";
+        $request = $this->select_all($sql);
+        if (empty($request)) {
+            $sql = "UPDATE producto 
+						SET categoriaid=?,
+							codigo=?,
+							nombre=?,
+							descripcion=?,
+							precio=?,
+							stock=?,
+							ruta=?,
+							status=? 
+						WHERE idproducto = $this->intIdProducto ";
+            $arrData = array(
+                $this->intCategoriaId,
+                $this->intCodigo,
+                $this->strNombre,
+                $this->strDescripcion,
+                $this->strPrecio,
+                $this->intStock,
+                $this->strRuta,
+                $this->intStatus
+            );
+
+            $request = $this->update($sql, $arrData);
+            $return = $request;
+        } else {
+            $return = "exist";
+        }
+        return $return;
+    }
+
     public function insertImage(int $idproducto, string $imagen)
     {
         $this->intIdProducto = $idproducto;

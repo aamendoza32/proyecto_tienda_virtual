@@ -303,6 +303,69 @@ function fntViewInfo(idProducto) {
 	};
 }
 
+function fntEditInfo(element, idProducto) {
+	rowTable = element.parentNode.parentNode.parentNode;
+	document.querySelector("#titleModal").innerHTML = "Actualizar Producto";
+	document
+		.querySelector(".modal-header")
+		.classList.replace("headerRegister", "headerUpdate");
+	document
+		.querySelector("#btnActionForm")
+		.classList.replace("btn-primary", "btn-info");
+	document.querySelector("#btnText").innerHTML = "Actualizar";
+	let request = window.XMLHttpRequest
+		? new XMLHttpRequest()
+		: new ActiveXObject("Microsoft.XMLHTTP");
+	let ajaxUrl = base_url + "/Productos/getProducto/" + idProducto;
+	request.open("GET", ajaxUrl, true);
+	request.send();
+	request.onreadystatechange = function () {
+		if (request.readyState == 4 && request.status == 200) {
+			let objData = JSON.parse(request.responseText);
+			if (objData.status) {
+				let htmlImage = "";
+				let objProducto = objData.data;
+				document.querySelector("#idProducto").value =
+					objProducto.idproducto;
+				document.querySelector("#txtNombre").value = objProducto.nombre;
+				document.querySelector("#txtDescripcion").value =
+					objProducto.descripcion;
+				document.querySelector("#txtCodigo").value = objProducto.codigo;
+				document.querySelector("#txtPrecio").value = objProducto.precio;
+				document.querySelector("#txtStock").value = objProducto.stock;
+				document.querySelector("#listCategoria").value =
+					objProducto.categoriaid;
+				document.querySelector("#listStatus").value = objProducto.status;
+				tinymce.activeEditor.setContent(objProducto.descripcion);
+				$("#listCategoria").selectpicker("render");
+				$("#listStatus").selectpicker("render");
+				fntBarcode();
+
+				if (objProducto.images.length > 0) {
+					let objProductos = objProducto.images;
+					for (let p = 0; p < objProductos.length; p++) {
+						let key = Date.now() + p;
+						htmlImage += `<div id="div${key}">
+                            <div class="prevImage">
+                            <img src="${objProductos[p].url_image}"></img>
+                            </div>
+                            <button type="button" class="btnDeleteImage" onclick="fntDelItem('#div${key}')" imgname="${objProductos[p].img}">
+                            <i class="fas fa-trash-alt"></i></button></div>`;
+					}
+				}
+				document.querySelector("#containerImages").innerHTML = htmlImage;
+				document.querySelector("#divBarCode").classList.remove("notblock");
+				document
+					.querySelector("#containerGallery")
+					.classList.remove("notblock");
+				$("#modalFormProductos").modal("show");
+			} else {
+				swal("Error", objData.msg, "error");
+			}
+		}
+	};
+}
+
 function fntCategorias() {
 	if (document.querySelector("#listCategoria")) {
 		let ajaxUrl = base_url + "/Categorias/getSelectCategorias";
