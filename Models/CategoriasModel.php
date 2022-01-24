@@ -88,4 +88,37 @@ class CategoriasModel extends Mysql
         }
         return $request;
     }
+
+    public function deleteCategoria(int $idcategoria)
+    {
+        $this->intIdcategoria = $idcategoria;
+        $sql = "SELECT * FROM producto WHERE categoriaid = $this->intIdcategoria";
+        $request = $this->select_all($sql);
+        if (empty($request)) {
+            $sql = "UPDATE categoria SET status = ? WHERE idcategoria = $this->intIdcategoria ";
+            $arrData = array(0);
+            $request = $this->update($sql, $arrData);
+            if ($request) {
+                $request = 'ok';
+            } else {
+                $request = 'error';
+            }
+        } else {
+            $request = 'exist';
+        }
+        return $request;
+    }
+
+    public function getCategoriasFooter()
+    {
+        $sql = "SELECT idcategoria, nombre, descripcion, portada, ruta
+					FROM categoria WHERE  status = 1 AND idcategoria IN (" . CAT_FOOTER . ")";
+        $request = $this->select_all($sql);
+        if (count($request) > 0) {
+            for ($c = 0; $c < count($request); $c++) {
+                $request[$c]['portada'] = BASE_URL . '/Assets/images/uploads/' . $request[$c]['portada'];
+            }
+        }
+        return $request;
+    }
 }
