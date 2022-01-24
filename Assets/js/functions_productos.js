@@ -24,6 +24,24 @@ tinymce.init({
 		"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
 });
 
+function fntCategorias() {
+	if (document.querySelector("#listCategoria")) {
+		let ajaxUrl = base_url + "/Categorias/getSelectCategorias";
+		let request = window.XMLHttpRequest
+			? new XMLHttpRequest()
+			: new ActiveXObject("Microsoft.XMLHTTP");
+		request.open("GET", ajaxUrl, true);
+		request.send();
+		request.onreadystatechange = function () {
+			if (request.readyState == 4 && request.status == 200) {
+				document.querySelector("#listCategoria").innerHTML =
+					request.responseText;
+				$("#listCategoria").selectpicker("render");
+			}
+		};
+	}
+}
+
 function fntBarcode() {
 	let codigo = document.querySelector("#txtCodigo").value;
 	JsBarcode("#barcode", codigo);
