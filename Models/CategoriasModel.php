@@ -43,4 +43,12 @@ class CategoriasModel extends Mysql
         }
         return $return;
     }
+
+    public function selectCategorias()
+    {
+        $sql = "SELECT * FROM categoria 
+					WHERE status != 0 ";
+        $request = $this->select_all($sql);
+        return $request;
+    }
 }

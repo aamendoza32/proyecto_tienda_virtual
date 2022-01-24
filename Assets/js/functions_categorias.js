@@ -1,6 +1,8 @@
 let tableCategorias;
 let rowTable = "";
 let divLoading = document.querySelector("#divLoading");
+
+// Evento datatables
 document.addEventListener(
 	"DOMContentLoaded",
 	function () {
