@@ -1,4 +1,15 @@
 //funciones productos
+document.write(
+	`<script src="${base_url}/Assets/js/plugins/JsBarcode.all.min.js"></script>`
+);
+let tableProductos;
+let rowTable = "";
+$(document).on("focusin", function (e) {
+	if ($(e.target).closest(".tox-dialog").length) {
+		e.stopImmediatePropagation();
+	}
+});
+
 tinymce.init({
 	selector: "#txtDescripcion",
 	width: "100%",
@@ -12,6 +23,20 @@ tinymce.init({
 	toolbar:
 		"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
 });
+
+function fntBarcode() {
+	let codigo = document.querySelector("#txtCodigo").value;
+	JsBarcode("#barcode", codigo);
+}
+
+function fntPrintBarcode(area) {
+	let elemntArea = document.querySelector(area);
+	let vprint = window.open(" ", "popimpr", "height=400,width=600");
+	vprint.document.write(elemntArea.innerHTML);
+	vprint.document.close();
+	vprint.print();
+	vprint.close();
+}
 
 function openModal() {
 	rowTable = "";
