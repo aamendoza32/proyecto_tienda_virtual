@@ -1,8 +1,6 @@
 let tableCategorias;
 let rowTable = "";
 let divLoading = document.querySelector("#divLoading");
-
-// Evento datatables
 document.addEventListener(
 	"DOMContentLoaded",
 	function () {
@@ -108,7 +106,7 @@ document.addEventListener(
 			};
 		}
 
-		//NUEVA CATEGORIA..
+		//NUEVA CATEGORIA
 		let formCategoria = document.querySelector("#formCategoria");
 		formCategoria.onsubmit = function (e) {
 			e.preventDefault();
