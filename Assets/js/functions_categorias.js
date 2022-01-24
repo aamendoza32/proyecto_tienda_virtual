@@ -106,7 +106,7 @@ document.addEventListener(
 			};
 		}
 
-		//NUEVA CATEGORIA
+		//NUEVA CATEGORIA..
 		let formCategoria = document.querySelector("#formCategoria");
 		formCategoria.onsubmit = function (e) {
 			e.preventDefault();
