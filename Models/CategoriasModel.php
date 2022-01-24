@@ -60,4 +60,32 @@ class CategoriasModel extends Mysql
         $request = $this->select($sql);
         return $request;
     }
+
+    public function updateCategoria(int $idcategoria, string $categoria, string $descripcion, string $portada, string $ruta, int $status)
+    {
+        $this->intIdcategoria = $idcategoria;
+        $this->strCategoria = $categoria;
+        $this->strDescripcion = $descripcion;
+        $this->strPortada = $portada;
+        $this->strRuta = $ruta;
+        $this->intStatus = $status;
+
+        $sql = "SELECT * FROM categoria WHERE nombre = '{$this->strCategoria}' AND idcategoria != $this->intIdcategoria";
+        $request = $this->select_all($sql);
+
+        if (empty($request)) {
+            $sql = "UPDATE categoria SET nombre = ?, descripcion = ?, portada = ?, ruta = ?, status = ? WHERE idcategoria = $this->intIdcategoria ";
+            $arrData = array(
+                $this->strCategoria,
+                $this->strDescripcion,
+                $this->strPortada,
+                $this->strRuta,
+                $this->intStatus
+            );
+            $request = $this->update($sql, $arrData);
+        } else {
+            $request = "exist";
+        }
+        return $request;
+    }
 }
