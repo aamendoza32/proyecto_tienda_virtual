@@ -12,7 +12,7 @@ if (!empty($data['page'])) {
 ?>
 <!-- Slider -->
 <section class="section-slide">
-    <div class="wrap-slick1">
+    <div clagit css="wrap-slick1">
         <div class="slick1">
             <?php
 			for ($i = 0; $i < count($arrSlider); $i++) {
