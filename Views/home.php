@@ -56,6 +56,7 @@ if (!empty($data['page'])) {
     <div class="container">
         <div class="row">
             <?php
+			// MOSTRAR PRODUCTOS EN LA SECCIÓN DE INICIO
 			for ($j = 0; $j < count($arrBanner); $j++) {
 				$ruta = $arrBanner[$j]['ruta'];
 			?>
