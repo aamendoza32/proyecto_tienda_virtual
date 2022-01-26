@@ -66,6 +66,7 @@ class Tienda extends Controllers
 		}
 	}
 
+	// CONFIGURACION DE PRODUCTO: GET PRODUCTO, RUTAS AMIGABLES
 	public function producto($params)
 	{
 		if (empty($params)) {
