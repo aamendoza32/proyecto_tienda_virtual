@@ -6,7 +6,7 @@ $arrProductos = $data['productos'];
 
 $contentPage = "";
 if (!empty($data['page'])) {
-	$contentPage = $data['page']['contenido'];
+    $contentPage = $data['page']['contenido'];
 }
 
 ?>
@@ -16,10 +16,10 @@ if (!empty($data['page'])) {
         <div class="slick1">
 
             <?php
-			// MOSTRAR CATEGORIAS EN SLIDER Y BANNER
-			for ($i = 0; $i < count($arrSlider); $i++) {
-				$ruta = $arrSlider[$i]['ruta'];
-			?>
+            // MOSTRAR CATEGORIAS EN SLIDER Y BANNER
+            for ($i = 0; $i < count($arrSlider); $i++) {
+                $ruta = $arrSlider[$i]['ruta'];
+            ?>
             <div class="item-slick1" style="background-image: url(<?= $arrSlider[$i]['portada'] ?>);">
                 <div class="container h-full">
                     <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
@@ -45,8 +45,8 @@ if (!empty($data['page'])) {
                 </div>
             </div>
             <?php
-			}
-			?>
+            }
+            ?>
         </div>
     </div>
 </section>
@@ -56,10 +56,10 @@ if (!empty($data['page'])) {
     <div class="container">
         <div class="row">
             <?php
-			// MOSTRAR PRODUCTOS EN LA SECCIÓN DE INICIO
-			for ($j = 0; $j < count($arrBanner); $j++) {
-				$ruta = $arrBanner[$j]['ruta'];
-			?>
+            // MOSTRAR PRODUCTOS EN LA SECCIÓN DE INICIO
+            for ($j = 0; $j < count($arrBanner); $j++) {
+                $ruta = $arrBanner[$j]['ruta'];
+            ?>
             <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
                 <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
@@ -84,8 +84,8 @@ if (!empty($data['page'])) {
                 </div>
             </div>
             <?php
-			}
-			?>
+            }
+            ?>
         </div>
     </div>
 </div>
@@ -101,14 +101,14 @@ if (!empty($data['page'])) {
         <hr>
         <div class="row isotope-grid">
             <?php
-			for ($p = 0; $p < count($arrProductos); $p++) {
-				$rutaProducto = $arrProductos[$p]['ruta'];
-				if (count($arrProductos[$p]['images']) > 0) {
-					$portada = $arrProductos[$p]['images'][0]['url_image'];
-				} else {
-					$portada = media() . '/images/uploads/product.png';
-				}
-			?>
+            for ($p = 0; $p < count($arrProductos); $p++) {
+                $rutaProducto = $arrProductos[$p]['ruta'];
+                if (count($arrProductos[$p]['images']) > 0) {
+                    $portada = $arrProductos[$p]['images'][0]['url_image'];
+                } else {
+                    $portada = media() . '/images/uploads/product.png';
+                }
+            ?>
             <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
                 <!-- Block2 -->
                 <div class="block2">
