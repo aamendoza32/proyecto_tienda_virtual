@@ -228,18 +228,19 @@ if (document.querySelector(".methodpago")) {
 	});
 }
 
-function fntUpdateCant(pro, cant) {
-	if (cant <= 0) {
-		document.querySelector("#btnComprar").classList.add("notblock");
-	} else {
-		document.querySelector("#btnComprar").classList.remove("notblock");
+function fntdelItem(element) {
+	//Option 1 = Modal
+	//Option 2 = Vista Carrito
+	let option = element.getAttribute("op");
+	let idpr = element.getAttribute("idpr");
+	if (option == 1 || option == 2) {
 		let request = window.XMLHttpRequest
 			? new XMLHttpRequest()
 			: new ActiveXObject("Microsoft.XMLHTTP");
-		let ajaxUrl = base_url + "/Tienda/updCarrito";
+		let ajaxUrl = base_url + "/Tienda/delCarrito";
 		let formData = new FormData();
-		formData.append("id", pro);
-		formData.append("cantidad", cant);
+		formData.append("id", idpr);
+		formData.append("option", option);
 		request.open("POST", ajaxUrl, true);
 		request.send(formData);
 		request.onreadystatechange = function () {
@@ -247,18 +248,30 @@ function fntUpdateCant(pro, cant) {
 			if (request.status == 200) {
 				let objData = JSON.parse(request.responseText);
 				if (objData.status) {
-					let colSubtotal = document.getElementsByClassName(pro)[0];
-					colSubtotal.cells[4].textContent = objData.totalProducto;
-					document.querySelector("#subTotalCompra").innerHTML =
-						objData.subTotal;
-					document.querySelector("#totalCompra").innerHTML = objData.total;
+					if (option == 1) {
+						document.querySelector("#productosCarrito").innerHTML =
+							objData.htmlCarrito;
+						const cants = document.querySelectorAll(".cantCarrito");
+						cants.forEach((element) => {
+							element.setAttribute("data-notify", objData.cantCarrito);
+						});
+					} else {
+						element.parentNode.parentNode.remove();
+						document.querySelector("#subTotalCompra").innerHTML =
+							objData.subTotal;
+						document.querySelector("#totalCompra").innerHTML =
+							objData.total;
+						if (document.querySelectorAll("#tblCarrito tr").length == 1) {
+							window.location.href = base_url;
+						}
+					}
 				} else {
 					swal("", objData.msg, "error");
 				}
 			}
+			return false;
 		};
 	}
-	return false;
 }
 
 if (document.querySelector("#txtDireccion")) {
