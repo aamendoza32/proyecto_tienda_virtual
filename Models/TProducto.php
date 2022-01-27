@@ -224,6 +224,7 @@ trait TProducto
 		return $request;
 	}
 
+	// OBTENER PRODUCTO POR ID
 	public function getProductoIDT(int $idproducto)
 	{
 		$this->con = new Mysql();
