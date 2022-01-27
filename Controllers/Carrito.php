@@ -4,7 +4,9 @@ require_once("Models/TProducto.php");
 class Carrito extends Controllers
 {
     use TCategoria,
-        TProducto/*, TTipoPago, TCliente*/;
+        TProducto,
+        TTipoPago,
+        TCliente;
     public function __construct()
     {
         parent::__construct();
