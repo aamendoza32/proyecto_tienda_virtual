@@ -66,7 +66,6 @@ class Tienda extends Controllers
 		}
 	}
 
-	// CONFIGURACION DE PRODUCTO: GET PRODUCTO, RUTAS AMIGABLES
 	public function producto($params)
 	{
 		if (empty($params)) {
@@ -123,7 +122,7 @@ class Tienda extends Controllers
 						array_push($arrCarrito, $arrProducto);
 						$_SESSION['arrCarrito'] = $arrCarrito;
 					}
-					// CONTAR PRODUCTOS SELECCIONADOS EN EL CARRITO
+
 					foreach ($_SESSION['arrCarrito'] as $pro) {
 						$cantCarrito += $pro['cantidad'];
 					}
@@ -270,5 +269,49 @@ class Tienda extends Controllers
 			echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		}
 		die();
+	}
+
+
+	public function page($pagina = null)
+	{
+
+		$pagina = is_numeric($pagina) ? $pagina : 1;
+		$cantProductos = $this->cantProductos();
+		$total_registro = $cantProductos['total_registro'];
+		$desde = ($pagina - 1) * PROPORPAGINA;
+		$total_paginas = ceil($total_registro / PROPORPAGINA);
+		$data['productos'] = $this->getProductosPage($desde, PROPORPAGINA);
+		//dep($data['productos']);exit;
+		$data['page_tag'] = NOMBRE_EMPESA;
+		$data['page_title'] = NOMBRE_EMPESA;
+		$data['page_name'] = "tienda";
+		$data['pagina'] = $pagina;
+		$data['total_paginas'] = $total_paginas;
+		$data['categorias'] = $this->getCategorias();
+		$this->views->getView($this, "tienda", $data);
+	}
+
+	public function search()
+	{
+		if (empty($_REQUEST['s'])) {
+			header("Location: " . base_url());
+		} else {
+			$busqueda = strClean($_REQUEST['s']);
+		}
+
+		$pagina = empty($_REQUEST['p']) ? 1 : intval($_REQUEST['p']);
+		$cantProductos = $this->cantProdSearch($busqueda);
+		$total_registro = $cantProductos['total_registro'];
+		$desde = ($pagina - 1) * PROBUSCAR;
+		$total_paginas = ceil($total_registro / PROBUSCAR);
+		$data['productos'] = $this->getProdSearch($busqueda, $desde, PROBUSCAR);
+		$data['page_tag'] = NOMBRE_EMPESA;
+		$data['page_title'] = "Resultado de: " . $busqueda;
+		$data['page_name'] = "tienda";
+		$data['pagina'] = $pagina;
+		$data['total_paginas'] = $total_paginas;
+		$data['busqueda'] = $busqueda;
+		$data['categorias'] = $this->getCategorias();
+		$this->views->getView($this, "search", $data);
 	}
 }
