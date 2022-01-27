@@ -59,7 +59,7 @@ const CAT_FOOTER = "1,2,3,4,5";
 const KEY = 'abelosh';
 const METHODENCRIPT = "AES-128-ECB";
 
-//Envío
+// Costo de envío
 const COSTOENVIO = 5;
 
 //Módulos
