@@ -123,7 +123,7 @@ class Tienda extends Controllers
 						array_push($arrCarrito, $arrProducto);
 						$_SESSION['arrCarrito'] = $arrCarrito;
 					}
-
+					// CONTAR PRODUCTOS SELECCIONADOS EN EL CARRITO
 					foreach ($_SESSION['arrCarrito'] as $pro) {
 						$cantCarrito += $pro['cantidad'];
 					}
