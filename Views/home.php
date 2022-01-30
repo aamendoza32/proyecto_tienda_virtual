@@ -12,11 +12,9 @@ if (!empty($data['page'])) {
 ?>
 <!-- Slider -->
 <section class="section-slide">
-    <div clagit css="wrap-slick1">
+    <div class="wrap-slick1">
         <div class="slick1">
-
             <?php
-            // MOSTRAR CATEGORIAS EN SLIDER Y BANNER
             for ($i = 0; $i < count($arrSlider); $i++) {
                 $ruta = $arrSlider[$i]['ruta'];
             ?>
@@ -56,7 +54,6 @@ if (!empty($data['page'])) {
     <div class="container">
         <div class="row">
             <?php
-            // MOSTRAR PRODUCTOS EN LA SECCIÓN DE INICIO
             for ($j = 0; $j < count($arrBanner); $j++) {
                 $ruta = $arrBanner[$j]['ruta'];
             ?>
