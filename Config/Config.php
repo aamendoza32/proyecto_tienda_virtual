@@ -13,7 +13,7 @@ const DB_PASSWORD = "";
 const DB_CHARSET = "utf8";
 
 //Para envío de correo
-const ENVIRONMENT = 0; // Local: 0, Produccón: 1;
+const ENVIRONMENT = 1; // Local: 0, Produccón: 1;
 
 //Deliminadores decimal y millar Ej. 24,1989.00
 const SPD = ".";
@@ -59,7 +59,7 @@ const CAT_FOOTER = "1,2,3,4,5";
 const KEY = 'abelosh';
 const METHODENCRIPT = "AES-128-ECB";
 
-// Costo de envío
+//Envío
 const COSTOENVIO = 5;
 
 //Módulos
@@ -96,3 +96,7 @@ const CANTPORDHOME = 8;
 const PROPORPAGINA = 4;
 const PROCATEGORIA = 4;
 const PROBUSCAR = 4;
+
+//REDES SOCIALES
+const FACEBOOK = "https://www.facebook.com/abelosh";
+const INSTAGRAM = "https://www.instagram.com/febel24/";
