@@ -1,12 +1,11 @@
 <?php
 require_once("Models/TCategoria.php");
 require_once("Models/TProducto.php");
+require_once("Models/TTipoPago.php");
+require_once("Models/TCliente.php");
 class Carrito extends Controllers
 {
-    use TCategoria,
-        TProducto,
-        TTipoPago,
-        TCliente;
+    use TCategoria, TProducto, TTipoPago, TCliente;
     public function __construct()
     {
         parent::__construct();
@@ -20,7 +19,6 @@ class Carrito extends Controllers
         $data['page_name'] = "carrito";
         $this->views->getView($this, "carrito", $data);
     }
-
     public function procesarpago()
     {
         if (empty($_SESSION['arrCarrito'])) {

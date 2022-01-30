@@ -3,7 +3,7 @@ const BASE_URL = "http://localhost/tienda_virtual";
 //const BASE_URL = "https://abelosh.com/tiendavirtual";
 
 //Zona horaria
-date_default_timezone_set('America/Guatemala');
+date_default_timezone_set('America/Guayaquil');
 
 //Datos de conexión a Base de Datos
 const DB_HOST = "localhost";
@@ -34,22 +34,22 @@ const SECRET = "";
 //const SECRET = "";
 
 //Datos envio de correo
-const NOMBRE_REMITENTE = "Tienda Virtual";
-const EMAIL_REMITENTE = "no-reply@abelosh.com";
-const NOMBRE_EMPESA = "Tienda Virtual";
-const WEB_EMPRESA = "www.abelosh.com";
+const NOMBRE_REMITENTE = "Tienda Virtual - SellsBest";
+const EMAIL_REMITENTE = "info@sellsbest.com";
+const NOMBRE_EMPESA = "Tienda Virtual - SellsBest";
+const WEB_EMPRESA = "www.sellsbest.com";
 
 const DESCRIPCION = "La mejor tienda en línea con artículos de moda.";
 const SHAREDHASH = "TiendaVirtual";
 
 //Datos Empresa
-const DIRECCION = "Avenida las Américas Zona 13, Guatemala";
-const TELEMPRESA = "+(502)78787845";
-const WHATSAPP = "+50278787845";
-const EMAIL_EMPRESA = "info@abelosh.com";
-const EMAIL_PEDIDOS = "info@abelosh.com";
-const EMAIL_SUSCRIPCION = "info@abelosh.com";
-const EMAIL_CONTACTO = "info@abelosh.com";
+const DIRECCION = "Cdla. Acuarelas del Río Mz. 5 Sl. 7";
+const TELEMPRESA = "073701444";
+const WHATSAPP = "073701444";
+const EMAIL_EMPRESA = "info@sellsbest.com";
+const EMAIL_PEDIDOS = "info@sellsbest.com";
+const EMAIL_SUSCRIPCION = "info@sellsbest.com";
+const EMAIL_CONTACTO = "info@sellsbest.com";
 
 const CAT_SLIDER = "1,2,3";
 const CAT_BANNER = "4,5,6";
@@ -96,7 +96,3 @@ const CANTPORDHOME = 8;
 const PROPORPAGINA = 4;
 const PROCATEGORIA = 4;
 const PROBUSCAR = 4;
-
-//REDES SOCIALES
-const FACEBOOK = "https://www.facebook.com/abelosh";
-const INSTAGRAM = "https://www.instagram.com/febel24/";

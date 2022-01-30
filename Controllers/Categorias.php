@@ -165,7 +165,6 @@ class Categorias extends Controllers
         die();
     }
 
-    // Para el registro de productos
     public function getSelectCategorias()
     {
         $htmlOptions = "";
